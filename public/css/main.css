@@ -1,0 +1,231 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+
+body{
+  background:#fff;
+}
+
+header{
+  background: #FAFAFA;
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20px;
+
+
+}
+
+header a{
+  box-sizing: border-box;
+  width: 25%;
+  display: inline-block;
+  margin-left: -3px;
+  text-align: center;
+  padding: 12px;
+}
+
+header .fa{
+  color: 111;
+  font-size:25px;
+}
+
+
+header :hover .fa-heart-o {
+  color: red;
+}
+
+.container{
+  background: #FAFAFA;
+  padding-top: 50px;
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  bottom: 0;
+
+}
+
+.card{
+  background: #fff;
+  margin: 0 auto;
+  width: 500px;
+
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.card-header{
+  padding: 15px;
+
+}
+
+.profile-img{
+  display: inline-block;
+  background: red;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+
+}
+
+.profile-info  {
+  font-family: 'Open Sans', sans-serif;
+    display: inline-block;
+    font-size: 14px;
+    color: #111;
+}
+
+.location {
+    font-size: 12px;
+    color: #111;
+
+  }
+
+.name{
+
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+.time{
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  float: right;
+  font-size: 12px;
+  top: 10px;
+  position: relative;
+}
+
+.content img{
+  width: 100%;
+}
+
+.card-footer{
+  font-family: 'Open Sans', sans-serif;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.likes{
+  color: #111;
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.description p{
+  font-size: 14px;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+.username{
+  font-weight: 700;
+}
+
+.comments p{
+  font-size: 14px;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+
+.heart{
+  width: 7%;
+  display: inline-block;
+}
+
+.heart .fa{
+  position: relative;
+  top: 3px;
+}
+
+.add-comment{
+  width: 70%;
+  display: inline-block;
+
+}
+
+.options{
+  display: inline-block;
+  width: 7%;
+  float: right;
+}
+
+.add-comment input{
+  width: 100%;
+  padding: 5px;
+  font-weight: 16px;
+  border: 0px solid #fff;
+}
+
+form .fa{
+  font-size: 24px;
+}
+hr{
+  padding: 0;
+}
+form{
+  padding-top: 15px;
+}
+
+.options .fa{
+  position: relative;
+  top: 3px;
+}
+
+.fa-tag{
+  padding-top:  5px;
+  color: 111;
+}
