@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Upload</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/fonts/css/font-awesome.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+  <section class="container">
+    <div class="card">
+      <div class="card-header">
+
+        <div class="profile-info">
+            <div class="name">Karuche</div>
+          
+        </div>
+
+      </div>
+      <div class="content">
+        <img id="myImg"/>
+        <input type="file" style="display:none;" id="up">
+        <button type="button" id="upload" class="btn fa fa-camera">Change Photo</button>
+      </div>
+      <div class="card-footer">
+        <div class="add-comment">
+          <input type="text" placeholder="Description"/>
+        </div>
+      <hr />
+        <form>
+          <div class="add-salon">
+            <input type="text" placeholder="Add Salon"/>
+          </div>
+          <div class="add-stylist">
+            <input type="text" placeholder="Add Stylist"/>
+          </div>
+          <div class="add-length">
+            <input type="text" placeholder="Add Length"/>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="Upload" class="btn btn-success">
+            <a href="upload.html" class="btn btn-primary">Cancel</a>
+          </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript" src="css/getUri.js"></script>
+
+<script src="css/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var myStorage = window.localStorage;
+      var reader = myStorage.getItem('ourImage');
+
+      $('img').attr('src', reader);
+      $('img').fadeIn();
+    });
+
+    $("#up").css('opacity','0');
+     $("#upload").click(function(e){
+    e.preventDefault();
+  $("#up").trigger('click');
+});
+
+    var reader;
+    $(":file").change(function () {
+    if (this.files && this.files[0]) {
+        reader = new FileReader();
+
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(this.files[0]);
+    }
+    });
+
+    function imageIsLoaded(e) {
+    $('img').attr('src', e.target.result);
+    $('img').fadeIn();
+    var myStorage= window.localStorage;
+    myStorage.setItem('ourImage',reader.result);
+    window.location="upload.html";
+    };
+
+  </script>
+</body>
+</html>
