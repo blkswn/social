@@ -8,7 +8,7 @@
 </head>
 
 <body>
-      <header>
+      <header style="z-index:100,position: fixed,top: 0">
       <a href="home.html"><i class="fa fa-home"></i></a>
       <a href="search.html"><i class="fa fa-search"></i></a>
       <input type="file" style="display:none" id="up"/>
@@ -18,57 +18,12 @@
 
       </header>
 
-      <section class="container">
-        <div class="card">
-          <div class="card-header">
-            <div class="profile-img">
 
-            </div>
-            <div class="profile-info">
-                <div class="name">Karuche</div>
-                <div class="location"> Johannesburg, Jozi</div>
-            </div>
-            <div class="time">
-              1hr
-            </div>
-          </div>
-          <div class="content">
-            <img src="img/pic.jpg"/>
-          </div>
-          <div class="card-footer">
-            <div class="likes">
-              21 likes
-              <div class="tags"><a href="#"><i class="fa fa-tag"></i></a></div>
-            </div>
+      <section class="container" id="socilaMedia" style="z-index:-1">
 
-
-            <div class="description">
-              <p><span class="username">Karuche</span> Hanging at the beach with my woes
-              </p>
-            </div>
-            <div class="comments">
-              <p><span class="username">bobby</span> Hanging at the beach with my woes
-              </p>
-              <p><span class="username">thirsty</span> Hanging at the beach with my woes
-              </p>
-            </div>
-          <hr />
-            <form>
-              <div class="heart">
-                <i class="fa fa-heart-o"></i>
-              </div>
-
-              <div class="add-comment">
-                <input type="text" placeholder="Add a comment..."/>
-              </div>
-
-              <div class="options">
-                <i class="fa fa-ellipsis-h"></i>
-              </div>
-            </form>
-          </div>
-        </div>
       </section>
+
+
 
       <script src="css/jquery.min.js"></script>
       <script>
@@ -96,6 +51,32 @@
       window.location="upload.html";
       };
 
+
+      function getMedia()
+      {
+
+        var url ="http://localhost:8080/ek/getMedia.php";
+        $.getJSON(url, function(result)
+        {
+          console.log(result);
+          $.each(result, function(i, field)
+          {
+            var description = field.description;
+            var salon = field.salon;
+            var stylist = field.stylist;
+            var length = field.length;
+
+            var div = document.getElementById("socilaMedia");
+            div.innerHTML += '<div class="card" style="margin-bottom:5px"><div class="card-header">  <div class="profile-info">  <div class="name">UserName</div>  <div class="location"> Salon:'+salon+'</div>  </div>  <div class="time"> Length:'+length+'Min </div> </div>   <div class="content"><img src="img/pic.jpg"/></div> <div class="card-footer"><div class="description">  <p><span class="username">Hair Style</span> '+description+'</p></div>  <div class="comments"><p><span class="username">Stylist</span> '+stylist+'</p>  </div><hr /></div></div></div>';
+          });
+        });
+      }
+
+      $(document).ready(function()
+      {
+  getMedia();
+
+      });
       </script>
 
 </body>

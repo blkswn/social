@@ -8,6 +8,32 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/fonts/css/font-awesome.css">
   <link rel="stylesheet" href="css/bootstrap.css">
+  <script>
+function validateForm() {
+    var post = true;
+    var salon = document.forms["form1"]["salon"].value;
+    var stylist = document.forms["form1"]["stylist"].value;
+    var length = document.forms["form1"]["length"].value;
+    if (salon == "") {
+        document.forms["form1"]["salon"].placeholder="Salon required";
+        post = false;
+    }
+    if (stylist == "") {
+        document.forms["form1"]["stylist"].placeholder="Salon stylist";
+        post = false;
+    }
+    if (length == "") {
+        document.forms["form1"]["length"].placeholder="Length required";
+        post = false;
+    }
+    if(post == false){
+      return false;
+    }
+    else {
+      alert("Success!")
+    }
+}
+</script>
 </head>
 <body>
   <section class="container">
@@ -16,42 +42,41 @@
 
         <div class="profile-info">
             <div class="name">Karuche</div>
-          
+
         </div>
 
       </div>
+      <form name="form1" method="post" onsubmit="return validateForm()" action="process.php">
       <div class="content">
         <img id="myImg"/>
         <input type="file" style="display:none;" id="up">
         <button type="button" id="upload" class="btn fa fa-camera">Change Photo</button>
       </div>
       <div class="card-footer">
-        <div class="add-comment">
-          <input type="text" placeholder="Description"/>
+        <div class="description">
+          <input  type="text" id="description" name="description" placeholder="Description"/>
         </div>
       <hr />
-        <form>
           <div class="add-salon">
-            <input type="text" placeholder="Add Salon"/>
+            <input type="text" id="salon" name="salon" placeholder="Add Salon"/>
           </div>
           <div class="add-stylist">
-            <input type="text" placeholder="Add Stylist"/>
+            <input type="text" id="stylist" name="stylist" placeholder="Add Stylist"/>
           </div>
           <div class="add-length">
-            <input type="text" placeholder="Add Length"/>
+            <input type="text" id="length" name="length" placeholder="Add Length"/>
           </div>
           <div>
-            <input type="submit" name="submit" value="Upload" class="btn btn-success">
+            <button type="submit" name="submit" value="Upload" class="btn btn-success">Submit</button>
             <a href="upload.html" class="btn btn-primary">Cancel</a>
           </div>
-
           </div>
         </form>
       </div>
     </div>
   </section>
   <script type="text/javascript" src="css/getUri.js"></script>
-
+<script src="css/magic.js"></script>
 <script src="css/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
@@ -71,7 +96,7 @@
     var reader;
     $(":file").change(function () {
     if (this.files && this.files[0]) {
-        reader = new FileReader();
+        reader = new FileReader ();
 
         reader.onload = imageIsLoaded;
         reader.readAsDataURL(this.files[0]);
