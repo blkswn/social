@@ -26,11 +26,32 @@ function validateForm() {
         document.forms["form1"]["length"].placeholder="Length required";
         post = false;
     }
-    if(post == false){
+    if(post == false)
+    {
       return false;
     }
     else {
-      alert("Success!")
+alert("here");
+      var des = document.getElementById("description").value;
+      var sal = document.getElementById("salon").value;
+      var styl = document.getElementById("stylist").value;
+      var length = 40;
+      var guid ="kkkk";
+      alert(des+" "+sal+ " "+styl+" "+length);
+      var dataString= "description="+des+"&salon="+sal+"&stylist="+styl+"&length="+length+"&imagePath="+guid;
+        $.ajax({
+type: "POST",
+url: "http://localhost:8080/ek/social/public/process.php",
+data: dataString,
+cache: false,
+success: function(html) {
+alert(html);
+}
+});
+
+
+      uploadImage(guid);
+
     }
 }
 </script>
@@ -46,7 +67,7 @@ function validateForm() {
         </div>
 
       </div>
-      <form name="form1" method="post" onsubmit="return validateForm()" action="process.php">
+      <form name="form1" method="post" onsubmit="return validateForm()" >
       <div class="content">
         <img id="myImg"/>
         <input type="file" style="display:none;" id="up">
@@ -76,7 +97,7 @@ function validateForm() {
     </div>
   </section>
   <script type="text/javascript" src="css/getUri.js"></script>
-<script src="css/magic.js"></script>
+
 <script src="css/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
@@ -110,7 +131,34 @@ function validateForm() {
     myStorage.setItem('ourImage',reader.result);
     window.location="upload.html";
     };
+  function uploadImage( uid)
+  {
 
+    var myStorage = window.localStorage;
+    var reader = myStorage.getItem('ourImage');
+    var datastring ="base64="+image+"&name="+uid;
+    var image = reader; // to create a image read the previous example
+  $.ajax({
+
+      url:"uploadImage.php",
+      // send the base64 post parameter
+      data:datastring,
+      // important POST method !
+      type:"post",
+      complete:function(){
+        console.log("Ready");
+      }
+    });
+  }
+
+  function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
   </script>
 </body>
 </html>
